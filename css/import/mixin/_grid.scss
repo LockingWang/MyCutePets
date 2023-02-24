@@ -1,0 +1,23 @@
+@mixin pad{
+    @media (max-width:768px){
+        @content
+    }
+}
+
+@mixin mobile_l{
+    @media (max-width:767px){
+        @content
+    }
+}
+
+@mixin mobile_m{
+    @media (max-width:480px){
+        @content
+    }
+}
+
+@mixin mobile_s{
+    @media (max-width:414px){
+        @content
+    }
+}

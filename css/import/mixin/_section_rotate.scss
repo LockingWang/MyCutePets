@@ -1,0 +1,10 @@
+@mixin section_rotate {
+    transform: rotate(-7deg);
+    margin-left: -80px;
+    margin-right: -80px;
+    padding: 35px 80px 35px 80px;
+}
+
+@mixin section_rotate_fixed {
+    transform: rotate(7deg);
+}
