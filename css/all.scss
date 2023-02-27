@@ -25,7 +25,14 @@ body {
 header {
     display: flex;
     justify-content: space-between;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.463);
+    position: fixed;
+    width: 1024px;
+    z-index: 1;
+    top: 0;
+    @include web-width {
+        width: 100%;
+    }
     h1 {
         width: 200px;
         a {
@@ -37,13 +44,14 @@ header {
         }
     }
     .menu {
+        position: relative;
         .mobile-menuBTN {
             display: none;
             cursor: pointer;
             margin-top: 5px;
             margin-right: 15px;
-            @include mobile_l(){
-                display: inline-block;
+            @include pad {
+                display: block;
             }
             .bar1 {
                 width: 35px;
@@ -81,9 +89,23 @@ header {
         .navbar {
             display: flex;
             font-size: $font_l;
+            transition: all 1s;
+            @include pad {
+                position: absolute;
+                display: block;
+                top: 50px;
+                right: 0;
+                height: 0;
+                overflow: hidden;
+            }
             li {
                 width: 120px;
                 text-align: center;
+                @include pad {
+                    width: 300px;
+                    background: black;
+                    border-bottom: 2px solid #fff;
+                }
                 a {
                     display: block;
                     color: #fff;
@@ -94,13 +116,21 @@ header {
                     background-color: #fff;
                     color: black;
                 }
+                .active {
+                    background-color: #fff;
+                    color: black;
+                }
             }
+        }
+        .show {
+            height: 150px;
         }
     }
 }
 
 .content {
     .livePlace {
+        padding-bottom: 50px;
         h2 {
             text-align: center;
             font-size: $font_l*1.5;
@@ -111,12 +141,18 @@ header {
             justify-content: center;
             img{
                 max-width: 200px;
+                @include mobile_s {
+                    display: none;
+                }
             }
             p {
                 width: 50%;
                 line-height: 1.5;
                 font-size: $font_s*1.2;
                 padding-top: 50px;
+                @include mobile_s {
+                    width: 80%;
+                }
             }
         }
     }
@@ -128,6 +164,10 @@ header {
             @include section_rotate_fixed;
             display: flex;
             justify-content: space-around;
+            align-items: center;
+            @include pad {
+                flex-direction: column-reverse
+            }
             img {
                 @include circle;
                 width: 300px;
@@ -135,7 +175,7 @@ header {
             }
             .info {
                 max-width: 500px;
-                padding-top: 30px;
+                padding: 30px 0;
                 font-size: $font_m;
                 line-height: 1.5;
                 background: #ffffffe1;
@@ -162,14 +202,19 @@ header {
             @include section_rotate_fixed;
             display: flex;
             justify-content: space-around;
+            align-items: center;
             padding-bottom: 30px;
+            @include pad {
+                flex-direction: column;
+            }
             img {
                 @include circle;
                 width: 300px;
-                height: auto;
+                height: 300px;
             }
             .info {
                 max-width: 500px;
+                padding: 30px 0;
                 font-size: $font_m;
                 line-height: 1.5;
                 background: #ffffffe1;
@@ -197,14 +242,18 @@ header {
             @include section_rotate_fixed;
             display: flex;
             justify-content: space-around;
+            @include pad {
+                flex-direction: column-reverse;
+                align-items: center;
+            }
             img {
                 @include circle;
                 width: 300px;
-                height: auto;
+                height: 300px;
             }
             .info {
                 max-width: 500px;
-                padding-top: 30px;
+                padding: 30px 0;
                 font-size: $font_m;
                 line-height: 1.5;
                 background: #ffffffe1;
@@ -229,9 +278,15 @@ footer {
     display: flex;
     justify-content: space-between;
     padding: 70px 30px 30px 30px;
+    @include pad {
+        display: block;
+    }
     .contact {
         font-size: $font_m;
         line-height: 1.5;
+        @include pad {
+            padding-bottom: 20px;
+        }
         p {
             font-weight: bold;
         }
@@ -263,3 +318,15 @@ footer {
     }
 }
 
+// fadeIn
+
+.init_hide {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1.5s;
+}
+
+.fadeIn {
+    opacity: 1;
+    transform: translateY(0);
+}

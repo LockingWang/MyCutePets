@@ -1,3 +1,9 @@
+@mixin web-width {
+    @media (max-width:1024px){
+        @content
+    }
+}
+
 @mixin pad{
     @media (max-width:768px){
         @content
