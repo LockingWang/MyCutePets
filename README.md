@@ -1,5 +1,6 @@
 # MyCutePets
-作品初次完成時間: 2023/02/27
+作品初次完成時間: 2023/02/27  
+[作品連結](https://lockingwang.github.io/MyCutePets/ "link")
 
 ## 說明
 在學習完**SCSS**以及**滾動視差**的課程後，
